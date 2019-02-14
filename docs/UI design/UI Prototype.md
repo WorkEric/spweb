@@ -12,7 +12,7 @@ The Mini.chat website has seven main pages:
 * Login
 * Profile	
 
-#Home Page
+## Home Page
 This page introduces how the services can be provided for both ordinary and advanced customers.
 
 ![Home Page](Home.png)
@@ -21,25 +21,25 @@ The whole website is a single-page website application; therefore, it keeps the 
 
 After the user files out the user's company website address and clicks the Get Started button, the small signup window will pop up and business website will show the address automatically.
 
-#Signup Popup
+## Signup Popup
 
 The signup page actually is a popup window. The user will file out the website url, business email and password to get started
 
 ![SignUp Page](SignUp.png)
 
-#Login Page
+## Login Page
 
 This page will check if email and password users file out are matched or not. After users clicking Sign in button, the webpage will direct to the original page before users directed to Login page.
 
 ![Login Page](Login.png)
 
-#Templates Page
+## Templates Page
 
 This page will use grids to show different templates under each industry category. When users clicking the category in the left-side nav bar, the templates will be changed accordingly. 
 
 ![templates Page](templates.png)
 
-#Template Detail Page
+## Template Detail Page
 
 This template detail page is shown after the user clicks one of the template in the Templates page. The right-side will show a trial demo and description. 
 
@@ -47,7 +47,7 @@ For the green, there are two circumstances. If users have already logged in, the
 
 ![Template Detail Page](TemplateDetail.png)
 
-#Price Page
+## Price Page
 
 This price page will show different levels of our services and contents. Users can select pay monthly or yearly. Prices will be changed accordingly but contents under each level will keep the same.
 
