@@ -4,13 +4,13 @@ This document will give an UI Prototype before coding and implementing the proje
 
 The Mini.chat website has seven main pages: 
 
-* Home
-* Templates
-* Template Detail
-* Prices
-* Career
-* Login
-* Profile	
+* **Home**
+* **Templates**
+* **Template Detail**
+* **Prices**
+* **Career**
+* **Login**
+* **Profile**	
 
 ## Home Page
 This page introduces how the services can be provided for both ordinary and advanced customers.
@@ -74,3 +74,17 @@ This page shows the user's basic information. Since on the Signup page, the data
 
 When the user clicks Plan & Templates on the left side nav, plan and templates the user selected are shown. Free plan is as default. If the user does not choose any template, "No template selected yet" is shown as default.
 
+## Career
+
+This page will show the jobs we are currently recruiting. Users can use left-side navigation to choose the jobs they are willing to apply for. The page also shows email address to receive the applications. Currently, there are three jobs:
+
+* **Full stack developer** 
+* **Senior Software Engineer** 
+* **Digital Marketing Specialist** 
+
+
+![Career1 Page](Career1.png)
+
+![Career2 Page](Career2.png)
+
+![Career3 Page](Career3.png)
