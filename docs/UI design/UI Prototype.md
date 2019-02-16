@@ -23,7 +23,7 @@ After the user files out the user's company website address and clicks the Get S
 
 ## Signup Popup
 
-The signup page actually is a popup window. The user will file out the website url, business email and password to get started
+The signup page actually is a popup window. The user will file out username, the website url, business email and password to get started
 
 ![SignUp Page](SignUp.png)
 
