@@ -1,0 +1,3 @@
+pip install virtualenv
+virtualenv -p python3 ypu_env
+source ypu_env/bin/activate
