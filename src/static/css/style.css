@@ -1,0 +1,29 @@
+
+/*Navigation*/
+
+.container {
+    font-size: 15pt;
+}
+.navbar-logo {
+    width:3%;
+}
+
+#signUp {
+    color:blue;
+}
+
+.foot .row .col-sm {
+    margin-left:2%
+}
+.foot .row .col-sm p {
+    font-size: 14px;
+    margin:1% 0 0 0;
+}
+
+.foot .row .col-sm:last-child h6{
+    color:blue;
+}
+
+.foot .row .col-sm:last-child i{
+    margin-right:2%;
+}
