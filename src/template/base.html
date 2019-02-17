@@ -18,7 +18,7 @@
 		
 	</head>
 	<body>
-        <div class="container">
+        <div class="header">
             <nav class="navbar navbar-expand-lg navbar-light">
               <img class="navbar-logo" src="../static/img/minibot-logo.png">
               <a class="navbar-brand" href="#">Mini.chat</a>
@@ -58,42 +58,43 @@
 	
         <div>
             {% block body %}
-            
+
             {% endblock %}
         </div>
 
-        <div class="container foot">
-            <div class="row">
-                <div class="col-sm">
-                    <h6> <span style="color:orange">|</span> GET TO KNOW US </h6>
-                    <p>About</p>
-                    <p>FAQ's</p>
-                    <p>Pricing</p>
-                </div>
-                <div class="col-sm">
-                    <h6> <span style="color:orange">|</span> MEDIA </h6>
-                    <p>Blog</p>
-                    <p>Press Center</p>
-                </div>
-                <div class="col-sm">
-                    <h6> <span style="color:orange">|</span> SUPPORT </h6>
-                    <p>Help Center</p>
-                    <p>Contact Us</p>
-                </div>
-                <div class="col-sm">
-                    <center>
-                        <h6> <span style="color:orange">|</span> Connect with Us</h6>
-                        <div>
-                            <i class="fa fa-facebook-square"></i>
-                            <i class="fa fa-twitter-square"></i>
-                            <i class="fa fa-linkedin-square"></i>
-                            <i class="fa fa-youtube-square"></i>
-                            <i class="fa fa-instagram"></i>
-                        </div>
-                    </center>
+        <div class="foot">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <h6> <span style="color:orange">|</span> GET TO KNOW US </h6>
+                        <p>About</p>
+                        <p>FAQ's</p>
+                        <p>Pricing</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <h6> <span style="color:orange">|</span> MEDIA </h6>
+                        <p>Blog</p>
+                        <p>Press Center</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <h6> <span style="color:orange">|</span> SUPPORT </h6>
+                        <p>Help Center</p>
+                        <p>Contact Us</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <center>
+                            <h6> <span style="color:orange">|</span> Connect with Us</h6>
+                            <div>
+                                <i class="fa fa-facebook-square"></i>
+                                <i class="fa fa-twitter-square"></i>
+                                <i class="fa fa-linkedin-square"></i>
+                                <i class="fa fa-youtube-square"></i>
+                                <i class="fa fa-instagram"></i>
+                            </div>
+                        </center>
+                    </div>
                 </div>
             </div>
-
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -109,6 +110,27 @@
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-	
+
+        <script>
+
+            // When the user scrolls the page, execute myFunction
+            window.onscroll = function() {myFunction()};
+
+            // Get the header
+            var header = document.getElementsByClassName("header")[0];
+
+            // Get the offset position of the navbar
+            var sticky = header.offsetTop;
+
+            // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+            function myFunction() {
+              if (window.pageYOffset > sticky) {
+                header.classList.add("fixed");
+              } else {
+                header.classList.remove("fixed");
+              }
+            }
+
+        </script>
 	</body>
 </html>

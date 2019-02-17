@@ -1,9 +1,23 @@
 
 /*Navigation*/
 
-.container {
+body {
+    font-family: Montserrat,sans-serif;
     font-size: 15pt;
 }
+
+.fixed {
+    position: fixed;
+    top:0; left:0;
+    width: 100%;
+    background-color: white;
+    z-index:1030;
+}
+
+.header {
+    padding: 0 7%;
+}
+
 .navbar-logo {
     width:3%;
 }
@@ -12,18 +26,59 @@
     color:blue;
 }
 
-.foot .row .col-sm {
+.foot {
+    background-color: white; /* For browsers that do not support gradients */
+    background-image: linear-gradient(0deg, #dce5f4, white);
+}
+
+.foot .row {
     margin-left:2%
 }
-.foot .row .col-sm p {
+.foot .row p {
     font-size: 14px;
     margin:1% 0 0 0;
 }
 
-.foot .row .col-sm:last-child h6{
+.foot .row .col-lg-3:last-child h6{
     color:blue;
 }
 
-.foot .row .col-sm:last-child i{
+.foot .row .col-lg-3:last-child i{
     margin-right:2%;
+}
+
+/*Home*/
+.introduction {
+    text-align:center;
+    margin-top:4%
+}
+h1 {
+    font-size: 28pt;
+    color: #322e58;
+}
+.introduction p {
+    color:#5a5684;
+    margin-top:1.5%;
+    font-size: 16pt;
+}
+.introduction img {
+    width: 50%;
+    margin-top:2%;
+}
+
+.introduction:nth-child(2) {
+    background-color: #fcfcfc;
+}
+
+.introduction:nth-child(2) h1 {
+    padding-top: 2%
+}
+
+#carouselExampleControls {
+    margin: 0 25% 5% 25%;
+    width: 50%;
+}
+
+.d-block {
+    height: 300px;
 }

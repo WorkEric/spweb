@@ -1,7 +1,38 @@
 {% extends 'base.html' %}
 {% block body %}
 {% load static %}
+<div class="introduction">
+    <h1>One simple chatbot builder</h1>
+    <p>Build your chatbot in few minutes without any coding knowledge</p>
+    <img src="../static/img/laptop.png">
+</div>
 
-<h1>Reach home page</h1>
+<div class="introduction">
+    <h1>Personalize Your Own Chatbot</h1>
+    <p>Set up a meeting with our specialized tech team to create an advanced chatbot</p>
+    <p>See Our Successful Clients</p>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item">
+          <img class="d-block w-100" src="https://marketingland.com/wp-content/ml-loads/2016/04/facebook-bots-messenger1-1920.jpg" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="https://i.pinimg.com/originals/23/eb/86/23eb8637b16f349af0679278f421de46.png" alt="Third slide">
+        </div>
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="https://s3.amazonaws.com/coursetro/posts/45-full.png" alt="First slide">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+</div>
+
 
 {% endblock %}
