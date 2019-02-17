@@ -47,8 +47,8 @@ This table focus on the template content
 |---|---|---|---|
 | id | int(11) | PK, AUTO_INCREMENT |
 | title | varchar(255)| | content title name |
-| image | varchar(255) |  | image of picture |
-| description | varchar(255) |  | description of picture | 
+| image | varchar(1024) |  | image of picture |
+| description | longtext |  | description of picture | 
 | created_at | datetime(6) |  |  |
 | updated_at | datetime(6) |  |  |
 
@@ -88,8 +88,8 @@ Table for price payment value and duration
 |---|---|---|---|
 | id | int(11) | PK, AUTO_INCREMENT |
 | price_plan_id |  int(11) |  ForeignKey to price_plan.id | |
-| price_type | varchar(255)| |  |
-| value | int(11) |  |  |  
+| price_type | varchar(255)| | Free, Lite, Standard and Plus |
+| value | int(11) | Money only integer, no conside float. |  |  
 | start_at | datetime(6) |  |  |
 | end_at | datetime(6) |  |  |
 | created_at | datetime(6) |  |  |
@@ -104,7 +104,6 @@ Table for price plan
 | Field | Type | Note | Description |
 |---|---|---|---|
 | id | int(11) | PK, AUTO_INCREMENT |
-| price_plan_id | int(11) | ForeignKey to price_plan.id | |
 | name | varchar(255)| |  |
 | description | longtext |  | For tooltip |  
 | created_at | datetime(6) |  |  |
@@ -124,7 +123,7 @@ Since price_plan and price_feature are many to many relation, so we use the tran
 | updated_at | datetime(6) |  |  |
 
 
-### 8. Table `user`
+### 8. Table `sp_user`
 
 Table for price plan 
 
@@ -135,9 +134,11 @@ Table for price plan
 | first_name | varchar(255) |  |  |  
 | last_name | varchar(255) |  |  |
 | email | varchar(255)| UNIQ |  |
+| company | varchar(255) | | |
+| company_url | varchar(1024) | | | 
 | phone | varchar(255)| UNIQ |  |
-| avatar | varchar(255)| | image of people |
-| actived | tinyint(1)| | Boolean: user is actived or not |
+| avatar | varchar(1024)| | image of people |
+| activated | tinyint(1)| | Boolean: user is activated or not |
 | whitelisting | tinyint(1)| | Boolean: if this user is admin user |
 | created_at | datetime(6) |  |  |
 | updated_at | datetime(6) |  |  |
@@ -149,7 +150,7 @@ Table for user select plan
 | Field | Type | Note | Description |
 |---|---|---|---|
 | id | int(11) | PK, AUTO_INCREMENT |
-| user_id | int(11)| ForeignKey to user.id |  |
+| sp_user_id | int(11)| ForeignKey to user.id |  |
 | price_payment_id | int(11)| ForeignKey to price_payment.id |  |
 | start_at | datetime(6) |  |  |
 | end_at | datetime(6) |  |  |

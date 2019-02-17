@@ -20,7 +20,7 @@ src/static/admin/*
 *.log
 *.pot
 *.pyc
-db.sqlite3
+### db.sqlite3 ###
 media
 
 # Created by https://www.gitignore.io/api/python
