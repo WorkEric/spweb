@@ -10,5 +10,5 @@ app_name = 'chatbot'
 
 urlpatterns = [
     path('', views.index, name='index'),
-
+    path('templates/', views.chatbot_template, name='chatbot_template'),
 ]
