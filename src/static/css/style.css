@@ -79,3 +79,47 @@ h1 {
 .d-block {
     height: 300px;
 }
+
+/*templates*/
+
+.topBanner {
+    background: url(https://png.pngtree.com/thumb_back/fw800/back_pic/03/70/31/8557b65652120ea.jpg);
+    width: 100%;
+    height:200px;
+}
+
+.topBanner h1 {
+    color: white;
+    text-align: center;
+    padding-top: 5%;
+}
+.topBanner p {
+    color: white;
+    text-align: center;
+}
+
+.templates ul {
+    list-style-type: none;
+    margin: 15% 0 5% 40%;
+    padding: 0;
+}
+.templates li {
+    font-size: 12pt;
+    margin: -15px 0 0 0;
+}
+.templates li a {
+    color: #5a5684;
+}
+.gallery {
+   margin:5% 8% 15% 3%;
+}
+.gallery .gallery_product {
+    padding: 0 10% 2% 0;
+}
+.gallery .gallery_product .card h5 {
+    text-align:center;
+}
+.gallery .gallery_product .card .card-img-top {
+    width: 18rem;
+    height: 200px
+}
