@@ -123,3 +123,24 @@ h1 {
     width: 18rem;
     height: 200px
 }
+.imgPart {
+    padding:0 0 0 10%;
+    margin: 6% 0;
+}
+#templateDetailImg {
+    width:100%;
+    height:auto%;
+}
+.details {
+    padding: 8% 10% 6% 3%;
+    text-align:center;
+    color:#322e58;
+}
+.details p {
+    margin: 3% 0 6% 0;
+    padding: 0 12%;
+    line-height:2;
+}
+.details p:nth-of-type(1) {
+    color:grey;
+}
