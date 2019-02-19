@@ -44,7 +44,8 @@ class TemplateCategory(TimeStampedModel):
 class TemplateContent(TimeStampedModel):
     """Template content class"""
     title = models.CharField(max_length=255, blank=True, null=True)
-    image = models.CharField(max_length=1024, blank=True, null=True)
+    image = models.ImageField(default='static/img/minibot-logo.png',
+                              upload_to='static/img/templatecontent/')
     description = models.TextField(null=True)
 
     template_categories = models.ManyToManyField(TemplateCategory,
@@ -120,7 +121,7 @@ class SpUser(TimeStampedModel):
     phone = models.CharField(max_length=255, unique=True, null=True)
     company = models.CharField(max_length=255, blank=True, null=True)
     company_url = models.CharField(max_length=1024, blank=True, null=True)
-    avatar = models.CharField(max_length=1024, blank=True, null=True)
+    avatar = models.ImageField(default='', upload_to='static/img/spuser')
     activated = models.BooleanField(default=False)  # user status
     whitelisting = models.BooleanField(default=False)  # user is admin or not
 
