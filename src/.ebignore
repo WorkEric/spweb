@@ -70,7 +70,7 @@ coverage.xml
 
 # Django stuff:
 *.log
-db.sqlite3
+# db.sqlite3
 
 # Flask stuff:
 instance/
