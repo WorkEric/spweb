@@ -123,7 +123,7 @@ Billed Monthly</pre>
 
 <script>
     $('#payYearly').click(function(){
-        $('#paymentSwitch').html('Per Yearly <span style="display: block;">Billed Yearly</span>');
+        $('.paymentSwitch').html('Per Yearly <span style="display: block;">Billed Yearly</span>');
         $('.price:eq(2)').text('$14');
         $('.price:eq(3)').text('$29');
         $('.price:eq(4)').text('$49');
@@ -131,7 +131,7 @@ Billed Monthly</pre>
         $('#payMonthly').css('color', 'black');
     });
     $('#payMonthly').click(function(){
-        $('#paymentSwitch').html('Per Monthly <span style="display: block;">Billed Monthly</span>');
+        $('.paymentSwitch').html('Per Monthly <span style="display: block;">Billed Monthly</span>');
         $('.price:eq(2)').text('$19');
         $('.price:eq(3)').text('$39');
         $('.price:eq(4)').text('$69');
