@@ -1,7 +1,143 @@
 {% extends 'base.html' %}
 {% block body %}
 {% load static %}
+<div class="price">
+    <h1>Simple and Transparent Pricing</h1>
+    <div>
+        <button type="button" id="payMonthly">
+            Pay Monthly
+        </button>
+        <button type="button" id="payYearly">
+            Pay Yearly
+        </button>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="row"></th>
+          <th scope="col">
+              <p>Free</p>
+              <p class="price">$0</p>
+              <pre class="paymentSwitch">Per Month
+Billed Monthly</pre>
+          </th>
+          <th scope="col">
+              <p>Lite</p>
+              <p class="price">$19</p>
+              <pre class="paymentSwitch">Per Month
+Billed Monthly</pre>
+          </th>
+          <th scope="col">
+              <p>Standard</p>
+              <p class="price">$39</p>
+              <pre class="paymentSwitch">Per Month
+Billed Monthly</pre>
+          </th>
+          <th scope="col">
+              <p>Plus</p>
+              <p class="price">$69</p>
+              <pre class="paymentSwitch">Per Month
+Billed Monthly</pre>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Bots</th>
+          <td>Unlimited</td>
+          <td>Unlimited</td>
+          <td>Unlimited</td>
+          <td>Unlimited</td>
+        </tr>
+        <tr>
+          <th scope="row">Responses per month</th>
+          <td>30</td>
+          <td>500</td>
+          <td>1500</td>
+          <td>5000</td>
+        </tr>
+        <tr>
+          <th scope="row">Data Storage in days</th>
+          <td>30</td>
+          <td>90</td>
+          <td>Unlimited</td>
+          <td>Unlimited</td>
+        </tr>
+        <tr>
+          <th scope="row">Responses & Insights</th>
+          <td>✓</td>
+          <td>✓</td>
+          <td>✓</td>
+          <td>✓</td>
+        </tr>
+        <tr>
+          <th scope="row">Logical jump</th>
+          <td> </td>
+          <td>✓</td>
+          <td>✓</td>
+          <td>✓</td>
+        </tr>
+        <tr>
+          <th scope="row">Zapier & API Integration</th>
+          <td> </td>
+          <td>✓</td>
+          <td>✓</td>
+          <td>✓</td>
+        </tr>
+        <tr>
+          <th scope="row">Notification to multiple emails</th>
+          <td> </td>
+          <td> </td>
+          <td>✓</td>
+          <td>✓</td>
+        </tr>
+        <tr>
+          <th scope="row">Campaign tracking</th>
+          <td> </td>
+          <td> </td>
+          <td>✓</td>
+          <td>✓</td>
+        </tr>
+        <tr>
+          <th scope="row">Remove Mini.chat branding</th>
+          <td> </td>
+          <td> </td>
+          <td>✓</td>
+          <td>✓</td>
+        </tr>
+        <tr>
+          <th scope="row"></th>
+          <td>Signup <i class="fa fa-sign-in" aria-hidden="true"></i></td>
+          <td>Signup <i class="fa fa-sign-in" aria-hidden="true"></i></td>
+          <td>Signup <i class="fa fa-sign-in" aria-hidden="true"></i></td>
+          <td>Signup <i class="fa fa-sign-in" aria-hidden="true"></i></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="emailUS">
+        <h1>Unlimited plans<span><img src="https://collect.chat/image/voltage-emoji.png" style="width:3%"></span></h1>
+        <pre>For business with large volumes of visitors contact us
+<span style="color:#4051b4">Email us at sales@mini.chat</span></pre>
+    </div>
+</div>
 
-<h1>Price page</h1>
+<script>
+    $('#payYearly').click(function(){
+        $('#paymentSwitch').html('Per Yearly <span style="display: block;">Billed Yearly</span>');
+        $('.price:eq(2)').text('$14');
+        $('.price:eq(3)').text('$29');
+        $('.price:eq(4)').text('$49');
+        $('#payYearly').css('color', '#4de27f');
+        $('#payMonthly').css('color', 'black');
+    });
+    $('#payMonthly').click(function(){
+        $('#paymentSwitch').html('Per Monthly <span style="display: block;">Billed Monthly</span>');
+        $('.price:eq(2)').text('$19');
+        $('.price:eq(3)').text('$39');
+        $('.price:eq(4)').text('$69');
+        $('#payMonthly').css('color', '#4de27f');
+        $('#payYearly').css('color', 'black');
+    });
+</script>
 
 {% endblock %}

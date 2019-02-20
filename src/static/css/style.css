@@ -54,7 +54,7 @@ body {
     margin-top:4%
 }
 h1 {
-    font-size: 28pt;
+    font-size: 26pt;
     color: #322e58;
 }
 .introduction p {
@@ -123,6 +123,8 @@ h1 {
     width: 18rem;
     height: 200px
 }
+
+/*Template-Detail*/
 .imgPart {
     padding:0 0 0 10%;
     margin: 6% 0;
@@ -143,4 +145,47 @@ h1 {
 }
 .details p:nth-of-type(1) {
     color:grey;
+}
+
+/*Price*/
+.price {
+    padding: 0 15%;
+    text-align: center;
+}
+.table {
+    margin: 5% 0;
+    font-size: 14px;
+    color:#484848;
+}
+.table pre {
+    text-align:center;
+    font-family: Montserrat,sans-serif;
+    font-size: 14px;
+    color:#484848;
+}
+#payMonthly, #payYearly {
+    margin: 5% 2% 0 2%;
+    display:inline-block;
+    background:none;
+    border:none;
+    cursor: pointer;
+    outline-style: none;
+}
+button##payMonthly:focus, #payYearly:focus {
+    outline-style: none;
+}
+#payMonthly {
+    color:#4de27f;
+}
+.emailUS pre {
+    font-family: Montserrat,sans-serif;
+    font-size: 20px;
+    color:#484848;
+    margin: 2% 0 8% 0;
+}
+.table thead th p:nth-of-type(2) {
+    font-size:28px;
+}
+tbody tr:last-child {
+    color: blue;
 }
