@@ -7,7 +7,6 @@
 
 ### Config file ###
 */config/*.yaml
-src/static/admin/*
 
 ### Runtime generate file ###
 */.DS_Store
