@@ -4,6 +4,7 @@
 """Chatbot app view"""
 
 from django.shortcuts import render
+from .controller.template_handler import get_template_info
 
 HOME_PAGE = 'home.html'
 TEMPLATE_PAGE = 'chatbot_template.html'
@@ -31,7 +32,12 @@ def index(request):
 
 def chatbot_template(request):
     """chatbot template page"""
-    return render(request, TEMPLATE_PAGE)
+    categories, contents = get_template_info()
+    context = {
+        'categories': categories,
+        'contents': contents
+    }
+    return render(request, TEMPLATE_PAGE, context)
 
 
 def chatbot_template_detail(request):

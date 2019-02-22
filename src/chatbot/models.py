@@ -8,9 +8,13 @@ Tasks:
 2. write the CRUD function for each model by getting and setting
 3. add the validation in the class
 
+Validation note:
+Note that validators will not be run automatically when you save a model, but if you are using
+a ModelForm, it will run your validators on any fields that are included in your form.
 """
 
 from django.db import models
+from django.core.validators import validate_email, validate_integer, MaxLengthValidator
 
 
 PRICE_TYPE = (
@@ -33,8 +37,9 @@ class TimeStampedModel(models.Model):
 
 class TemplateCategory(TimeStampedModel):
     """Template category class"""
-    name = models.CharField(max_length=255, unique=True, null=True)
-    order_number = models.IntegerField(default=0)
+    name = models.CharField(max_length=255, unique=True, null=True,
+                            validators=[MaxLengthValidator(255)])
+    order_number = models.IntegerField(default=0, validators=[validate_integer])
 
     class Meta:
         """Meta class for template category"""
@@ -43,7 +48,8 @@ class TemplateCategory(TimeStampedModel):
 
 class TemplateContent(TimeStampedModel):
     """Template content class"""
-    title = models.CharField(max_length=255, blank=True, null=True)
+    title = models.CharField(max_length=255, blank=True, null=True,
+                             validators=[MaxLengthValidator(255)])
     image = models.ImageField(default='static/img/minibot-logo.png',
                               upload_to='static/img/templatecontent/')
     description = models.TextField(null=True)
@@ -69,7 +75,8 @@ class TemplateCategoryContent(TimeStampedModel):
 
 class PricePlan(TimeStampedModel):
     """Price plan"""
-    name = models.CharField(max_length=255, unique=True, null=True)  # Free, Lite, Standard, Plus
+    name = models.CharField(max_length=255, unique=True, null=True,
+                            validators=[MaxLengthValidator(255)])  # Free, Lite, Standard, Plus
     short_description = models.TextField(null=True)
     long_description = models.TextField(null=True)
 
@@ -82,7 +89,7 @@ class PricePayment(TimeStampedModel):
     """Price payment class"""
     price_plan = models.ForeignKey(PricePlan, on_delete=models.CASCADE)
     price_type = models.CharField(max_length=40, choices=PRICE_TYPE, default='Monthly')
-    value = models.IntegerField(default=0)
+    value = models.IntegerField(default=0, validators=[validate_integer])
     start_at = models.DateTimeField(null=True)
     end_at = models.DateTimeField(null=True)
 
@@ -93,7 +100,7 @@ class PricePayment(TimeStampedModel):
 
 class PriceFeature(TimeStampedModel):
     """Price feature class"""
-    name = models.CharField(max_length=255, blank=True)
+    name = models.CharField(max_length=255, blank=True, validators=[MaxLengthValidator(255)])
     description = models.TextField(null=True)
     price_plans = models.ManyToManyField(PricePlan, through='PricePlanFeature')
 
@@ -114,13 +121,19 @@ class PricePlanFeature(TimeStampedModel):
 
 class SpUser(TimeStampedModel):
     """Spweb user class"""
-    username = models.CharField(max_length=255, unique=True, null=True)
-    first_name = models.CharField(max_length=255, blank=True, null=True)
-    last_name = models.CharField(max_length=255, blank=True, null=True)
-    email = models.CharField(max_length=255, unique=True, null=True)
-    phone = models.CharField(max_length=255, unique=True, null=True)
-    company = models.CharField(max_length=255, blank=True, null=True)
-    company_url = models.CharField(max_length=1024, blank=True, null=True)
+    username = models.CharField(max_length=255, unique=True, null=True,
+                                validators=[MaxLengthValidator(255)])
+    first_name = models.CharField(max_length=255, blank=True, null=True,
+                                  validators=[MaxLengthValidator(255)])
+    last_name = models.CharField(max_length=255, blank=True, null=True,
+                                 validators=[MaxLengthValidator(255)])
+    email = models.CharField(max_length=255, unique=True, null=True, validators=[validate_email])
+    phone = models.CharField(max_length=255, unique=True, null=True,
+                             validators=[MaxLengthValidator(255)])
+    company = models.CharField(max_length=255, blank=True, null=True,
+                               validators=[MaxLengthValidator(255)])
+    company_url = models.CharField(max_length=1024, blank=True, null=True,
+                                   validators=[MaxLengthValidator(1024)])
     avatar = models.ImageField(default='', upload_to='static/img/spuser')
     activated = models.BooleanField(default=False)  # user status
     whitelisting = models.BooleanField(default=False)  # user is admin or not
