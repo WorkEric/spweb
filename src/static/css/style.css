@@ -25,6 +25,9 @@ body {
 #signUp {
     color:blue;
 }
+#navBar li.active {
+    font-color:black;
+}
 
 .foot {
     background-color: white; /* For browsers that do not support gradients */
@@ -149,7 +152,7 @@ h1 {
 
 /*Price*/
 .price {
-    padding: 0 15%;
+    padding: 0 10%;
     text-align: center;
 }
 .table {
@@ -189,3 +192,50 @@ button##payMonthly:focus, #payYearly:focus {
 tbody tr:last-child {
     color: blue;
 }
+.price h1 {
+    color:#322e58;
+    margin-top: 3%;
+}
+tbody th {
+    text-align: left;
+}
+
+/*Career*/
+
+.topCareerBanner {
+    background: url(https://png.pngtree.com/thumb_back/fh260/back_pic/00/03/18/18561dabdb6ce04.jpg);
+    width: 100%;
+    height:200px;
+}
+.topCareerBanner h1 {
+    color: white;
+    text-align: center;
+    padding-top: 4%;
+}
+.topCareerBanner p {
+    color: white;
+    text-align: center;
+    inline-height: 0.8
+}
+.career .nav {
+    list-style-type: none;
+    margin: 20% 0 5% 0%;
+    padding: 0;
+    text-align:right;
+}
+.career .nav-item {
+    font-size: 12pt;
+    margin: -15px 0 4% 0;
+}
+.career .nav-item {
+    color: #5a5684;
+    cursor:pointer
+}
+.career .nav-item .active {
+    color:blue;
+}
+.careerDetails li {
+    margin:0;
+    font-size:14pt;
+}
+

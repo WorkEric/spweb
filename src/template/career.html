@@ -2,6 +2,136 @@
 {% block body %}
 {% load static %}
 
-<h1>Career page</h1>
+<div class="topCareerBanner">
+    <h1> Career</h1>
+    <p>
+        Join in our talented team<br>
+        Send your resume to <b>career@minichat.com</b>
+    </p>
+</div>
+<div class="career row">
+    <div class="col-lg-4">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link filter-button active" data-filter="all">Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link filter-button" data-filter="fullStack">Full Stack Developer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link filter-button" data-filter="senior">Senior Software Engineer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link filter-button" data-filter="specialist">Digital Marketing Specialist</a>
+          </li>
+        </ul>
+    </div>
+    <div class="col-lg-8">
+        <div class="row gallery">
+            <div class="careerDetails filter fullStack">
+                <h3>Full Stack Developer</h3>
+                <hr>
+                <h5>RESPONSIBILITIES</h5>
+                <ul>
+                    <li>Implementing both front-end and back-end web based applications</li>
+                    <li>Developing new functionality and maintaining existing components</li>
+                    <li>Identify issues and implement solutions to complex problems in large-scale backend infrastructure platforms</li>
+                    <li>Design, develop, test, deploy, maintain, and improve software across the stack</li>
+                    <li>Develop automated tests and deliver high-quality code to production within a short development cycle</li>
+                </ul>
+                <h5>QUALIFICATIONS</h5>
+                <ul>
+                    <li>Enthusiasm of working in a high-growth company</li>
+                    <li>A strong technical background with excellent problem solving and multitasking skills</li>
+                    <li>2-4 years of experience as full stack developer (frontend 30%, backend 70%)</li>
+                    <li>Solid experience with CSS, vast knowledge of responsive frameworks like bootstrap</li>
+                    <li>Experience in working with JavaScript frontend frameworks</li>
+                    <li>Hands on experience with at least one web development framework(e.g. RoR, Django, Flask, Laravel)</li>
+                    <li>Solid experience with SQL and NoSQL databases</li>
+                    <li>Experience with Amazon Web Services (AWS) is strongly desired</li>
+                    <li>Solid experience designing and using RESTful services</li>
+                    <li>Experience or interest in blockchain, especially Ethereum, is a plus</li>
+                </ul>
+            </div>
+            <div class="careerDetails filter senior">
+                <h3>Senior Software Engineer</h3>
+                <hr>
+                <h5>RESPONSIBILITIES</h5>
+                <ul>
+                    <li>Write clean, high quality code and test cases, implement the decentralization, distributed blockchain consensus and syncing protocol</li>
+                    <li>Use continuous integration technology to build, deploy and test all aspect of the products to ensure high quality delivery</li>
+                    <li>Strictly adhere to all security protocols and processes and work diligently to protect the assets of the company and its customers</li>
+                    <li>Monitor, research and evaluate Blockchain technologies</li>
+                </ul>
+                <h5>QUALIFICATIONS</h5>
+                <ul>
+                    <li>Demonstrated hands-on experience with blockchain technology, ideally with Bitcoin, Ethereum and cryptocurrencies in general</li>
+                    <li>Understanding of mainstream consensus algorithm, including but not limited to PoW, PoR, PoS, DPoS, PBFT, Paxos, Raft and so on</li>
+                    <li>Proficient in multiple programming languages such as Golang, Python</li>
+                    <li>Strong knowledge of data structures, algorithms, operating systems, and distributed systems fundamentals</li>
+                    <li>Understanding of security technologies: PKI, Crypto, identity management</li>
+                    <li>Enthusiasm of working in a high-growth company</li>
+                    <li>A strong technical background with excellent problem solving and multitasking skills</li>
+                    <li>Strong sense of ownership, passion to build quality products for massive scale in collaborative, agile environment and excitement to learn</li>
+                </ul>
+            </div>
+            <div class="careerDetails filter specialist">
+                <h3>Digital Marketing Specialist</h3>
+                <hr>
+                <h5>RESPONSIBILITIES</h5>
+                <ul>
+                    <li>Write engaging copy for our projects and campaigns in a conversational, customer-oriented style (in English)</li>
+                    <li>Create sharp, smart headlines and taglines</li>
+                    <li>Regularly create content for blog posts, emails campaigns, social media posts, and PR releases</li>
+                    <li>Review, rank and edit content created by our fans and participants of the content bounty campaigns</li>
+                    <li>Monitor current competitors, industry trends, and technology</li>
+                </ul>
+                <h5>QUALIFICATIONS</h5>
+                <ul>
+                    <li>Bachelor’s Degree in English, Literature, Journalism, Communications, or related field</li>
+                    <li>Multilingual in English and Chinese Mandarin (native English speaker, and Chinese as a working language)</li>
+                    <li>Experience at an advertising agency or in-house advertising/marketing group</li>
+                    <li>Experience creating advertising campaigns, and solid understanding of advertising craft</li>
+                    <li>Able to develop bounty campaigns and advertising campaigns, banners, emails, and sharp, smart headlines</li>
+                    <li>Able to compose longer-form content in clear, concise language</li>
+                    <li>A keen eye for detail and appreciation of good writing</li>
+                    <li>Ability to perform work in a high-volume, fast-paced environment</li>
+                    <li>Self-organization to allow prioritization and completion of multiple tasks within deadlines</li>
+                    <li>Experience working with emerging technologies is a plus</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+
+    $(".filter-button").click(function(){
+        var value = $(this).attr('data-filter');
+
+        if(value == "all")
+        {
+            //$('.filter').removeClass('hidden');
+            $('.filter').show('1000');
+        }
+        else
+        {
+//            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
+//            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
+            $(".filter").not('.'+value).hide('3000');
+            $('.filter').filter('.'+value).show('3000');
+
+        }
+    });
+
+    if ($(".filter-button").removeClass("active")) {
+$(this).removeClass("active");
+}
+$(this).addClass("active");
+
+});
+
+</script>
 
 {% endblock %}
