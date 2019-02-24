@@ -238,4 +238,62 @@ tbody th {
     margin:0;
     font-size:14pt;
 }
+/*login*/
+.login .logo {
+    margin: 4%;
+    text-align:center;
+}
+.login .content h1 {
+    color:#322e58;
+    text-align:center;
+}
+
+.content form {
+    padding: 2% 25%
+}
+
+.content input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.content button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+}
+
+.content button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.content .container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+.content p {
+    text-align:center;
+}
+.content p span {
+    color:blue;
+}
+
 
