@@ -13,6 +13,7 @@ PRICE_PAGE = 'price.html'
 CAREER_PAGE = 'career.html'
 LOGIN_PAGE = 'login.html'
 SIGNUP_PAGE = 'signup.html'
+PROFILE_PAGE = 'profile.html'
 
 
 def login(request):
@@ -53,3 +54,6 @@ def price(request):
 def career(request):
     """Career page"""
     return render(request, CAREER_PAGE)
+def profile(request):
+    """Profile page"""
+    return render(request, PROFILE_PAGE)

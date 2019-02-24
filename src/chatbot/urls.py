@@ -16,5 +16,5 @@ urlpatterns = [
     path('template/detail', views.chatbot_template_detail, name='chatbot_template_detail'),
     path('price/', views.price, name='price'),
     path('career/', views.career, name='career'),
-
+    path('profile/', views.profile, name='profile'),
 ]
