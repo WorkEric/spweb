@@ -80,7 +80,7 @@
     $(".filter-button").click(function(){
         var value = $(this).attr('data-filter');
         $(this).css("font-weight","bold");
-        $(".career .nav-item .nav-link").not(this).css("font-weight","normal");
+        $(".profile .nav-item .nav-link").not(this).css("font-weight","normal");
         $(".filter").not('.'+value).hide('3000');
         $('.filter').filter('.'+value).show('3000');
 
