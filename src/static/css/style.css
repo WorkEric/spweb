@@ -335,9 +335,11 @@ span.psw {
 }
 /* Profile */
 .topProfileBanner {
-    background: url(https://png.pngtree.com/thumb_back/fh260/back_pic/00/03/18/18561dabdb6ce04.jpg);
+    background: url(https://png.pngtree.com/thumb_back/fw800/back_pic/03/99/90/9257fb3cf459c0d.jpg);
     width: 100%;
     height:200px;
+    background-repeat:no-repeat;
+    background-size:cover;
 }
 .topProfileBanner h1 {
     color: white;
