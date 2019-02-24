@@ -189,6 +189,10 @@ button##payMonthly:focus, #payYearly:focus {
 .table thead th p:nth-of-type(2) {
     font-size:28px;
 }
+tbody tr:last-child a {
+    text-decoration:none;
+    color: blue;
+}
 tbody tr:last-child {
     color: blue;
 }
