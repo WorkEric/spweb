@@ -13,10 +13,7 @@
     <div class="col-lg-4">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link filter-button active" data-filter="all">Jobs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link filter-button" data-filter="fullStack">Full Stack Developer</a>
+            <a class="nav-link filter-button active" data-filter="fullStack">Full Stack Developer</a>
           </li>
           <li class="nav-item">
             <a class="nav-link filter-button" data-filter="senior">Senior Software Engineer</a>
@@ -106,31 +103,23 @@
 
 <script>
     $(document).ready(function(){
+        $('.senior').hide();
+        $('.specialist').hide();
 
     $(".filter-button").click(function(){
         var value = $(this).attr('data-filter');
-
-        if(value == "all")
-        {
-            //$('.filter').removeClass('hidden');
-            $('.filter').show('1000');
-        }
-        else
-        {
-//            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
-//            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
+        $(this).css("font-weight","bold");
+        $(".career .nav-item .nav-link").not(this).css("font-weight","normal");
+//          $('.filter[filter-item="'+value+'"]').removeClass('hidden');
+//          $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
             $(".filter").not('.'+value).hide('3000');
             $('.filter').filter('.'+value).show('3000');
 
-        }
+
     });
 
-    if ($(".filter-button").removeClass("active")) {
-$(this).removeClass("active");
-}
-$(this).addClass("active");
 
-});
+    });
 
 </script>
 

@@ -2,5 +2,94 @@
 {% block body %}
 {% load static %}
 
-<h1>Profile</h1>
+<div class="topProfileBanner">
+    <h1> Profile Information</h1>
+    <p>
+        See what you have used for your business
+    </p>
+</div>
+<div class="profile row">
+    <div class="col-lg-4">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link filter-button active" data-filter="basicInfo">Basic Info</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link filter-button" data-filter="plan">Plan & Templates</a>
+          </li>
+        </ul>
+    </div>
+    <div class="col-lg-8">
+            <div class="profileDetails filter basicInfo">
+                <h3>Basic Information</h3>
+                <hr>
+                <form>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-lg-3 col-form-label">Username</label>
+                        <div class="col-lg-9">
+                          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="kk">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="firstName" class="col-lg-3 col-form-label">First Name</label>
+                        <div class="col-lg-9">
+                          <input type="text" class="form-control" id="firstName" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="lastName" class="col-lg-3 col-form-label">Last Name</label>
+                        <div class="col-lg-9">
+                          <input type="text" class="form-control" id="lastName" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="phoneNumber" class="col-lg-3 col-form-label">Phone Number</label>
+                        <div class="col-lg-9">
+                          <input type="text" class="form-control" id="phoneNumber" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-lg-3 col-form-label">Business email</label>
+                        <div class="col-lg-9">
+                          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="kk@company.com">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="websiteUrl" class="col-lg-3 col-form-label">Website url</label>
+                        <div class="col-lg-9">
+                          <input type="text" readonly class="form-control-plaintext" id="websiteUrl" value="https://www.kk.com">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Save</button>
+                </form>
+            </div>
+            <div class="profileDetails filter plan">
+                <h3>Plan</h3>
+                <hr>
+                <p> Free</p>
+                <p>What to upgrade? check <a href="/price">here</a></p>
+                <h3>Templates</h3>
+                <hr>
+            </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+
+    $(".filter-button").click(function(){
+        var value = $(this).attr('data-filter');
+        $(this).css("font-weight","bold");
+        $(".career .nav-item .nav-link").not(this).css("font-weight","normal");
+        $(".filter").not('.'+value).hide('3000');
+        $('.filter').filter('.'+value).show('3000');
+
+
+    });
+
+
+    });
+
+</script>
+
 {% endblock %}
