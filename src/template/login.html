@@ -24,7 +24,7 @@
         <div class="login">
             <div class="logo">
                 <img class="navbar-logo" src="../static/img/minibot-logo.png">
-                <a class="navbar-brand" href="#">Mini.chat</a>
+                <a class="navbar-brand" href="/">Mini.chat</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -34,16 +34,16 @@
                 <form action="/action_page.php">
                   <div class="container">
                     <label for="name"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
+                    <input type="text" placeholder="Enter Username" name="name" required>
 
                     <label for="password"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <input type="password" placeholder="Enter Password" name="password" required>
 
                     <button type="submit">Login</button>
                     <span class="psw">Forgot <a href="#">password?</a></span>
                   </div>
                 </form>
-                <p>I am a <span>New User</span></p>
+                <p>I am a <span><a href="{% url 'chatbot:signup' %}">New User</a></span></p>
             </div>
         </div>
 	</body>

@@ -244,7 +244,7 @@ tbody th {
     text-align:center;
 }
 .login .content h1 {
-    color:#322e58;
+    color:#241151;
     text-align:center;
 }
 
@@ -269,6 +269,7 @@ tbody th {
   border: none;
   cursor: pointer;
   width: 50%;
+  border-radius: 12px;
 }
 
 .content button:hover {
@@ -289,11 +290,36 @@ span.psw {
   float: right;
   padding-top: 16px;
 }
-.content p {
+
+.login .content p {
     text-align:center;
 }
-.content p span {
-    color:blue;
+
+.login .content p span a {
+    text-decoration: none;
+    color:#007bff;
 }
 
+/*sign up*/
+.signup .content {
+    color:#241151;
+}
+.signup .logo {
+    margin: 4%;
+    text-align:center;
+}
+.signup .content h1 {
+    color:#241151;
+    text-align:center;
+}
+.signup .content button {
+    margin: 5% 25% 0 25%;
+}
+.signup .content p {
+    text-align:center;
+}
 
+.signup .content p span a {
+    text-decoration: none;
+    color:#007bff;
+}
