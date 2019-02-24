@@ -243,6 +243,10 @@ tbody th {
 .career .nav-item:nth-of-type(1) {
     font-weight:bold;
 }
+.careerDetails h5 {
+    font-size: 14pt;
+    font-weight: bold;
+}
 
 /*login*/
 .login .logo {
