@@ -9,42 +9,11 @@
 <div class="templates row">
     <div class="col-lg-3">
     <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link active filter-button" href="#" data-filter="all">All</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link filter-button" href="#" data-filter="general">General</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link filter-button" href="#" data-filter="education">Education</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link filter-button" href="#" data-filter="finance">Finance</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link filter-button" href="#" data-filter="healthBeauty">Health & Beauty</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link filter-button" href="#" data-filter="travelTransport">Travel & Transport</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link filter-button" href="#" data-filter="personal">Personal</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link filter-button" href="#" data-filter="eventPlanning">Event Planning</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link filter-button" href="#" data-filter="ITSoftware">IT & Software</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link filter-button" href="#" data-filter="realEstate">Real Estate</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link filter-button" href="#" data-filter="foodRestaurant">Food & Restaurant</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link filter-button" href="#" data-filter="designPhotograph">Design & Photography</a>
-      </li>
+        {% for category in categories %}
+            <li class="nav-item">
+                <a class="nav-link active filter-button" href="#" data-filter="{{ category.data_type }}">{{ category.name }}</a>
+            </li>
+        {% endfor %}
     </ul>
     </div>
     <div class="col-lg-9">

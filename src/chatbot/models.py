@@ -39,6 +39,8 @@ class TemplateCategory(TimeStampedModel):
     """Template category class"""
     name = models.CharField(max_length=255, unique=True, null=True,
                             validators=[MaxLengthValidator(255)])
+    data_type = models.CharField(max_length=255, null=True, default='',
+                                 validators=[MaxLengthValidator(255)])
     order_number = models.IntegerField(default=0, validators=[validate_integer])
 
     class Meta:

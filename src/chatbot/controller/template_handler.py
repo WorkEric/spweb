@@ -14,7 +14,7 @@ def get_template_info():
     template content
     user information if user login
     """
-    categories = TemplateCategory.objects.all()
+    categories = TemplateCategory.objects.all().order_by('created_at')
     contents = TemplateContent.objects.all()
     # test = TemplateCategory(name='test')
     # test.full_clean()
