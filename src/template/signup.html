@@ -31,20 +31,29 @@
             </div>
             <div class="content">
                 <h1>Get Started in Seconds</h1>
-                <form action="/action_page.php">
+                {% block content %}
+                <form method="POST">
                   <div class="container">
+                    {% csrf_token %}
                     <label for="url">Website URL</label>
-                    <input type="text" placeholder="https://www.yourcompany.com" name="url" required>
-
+                    <input type="text" placeholder="https://www.yourcompany.com" name="url">
                     <label for="email">Business Email</label>
-                    <input type="password" placeholder="youremail@company.com" name="email" required>
+                    <input type="text" placeholder="youremail@company.com" name="username" required>
 
                     <label for="password">Password</label>
-                    <input type="password" placeholder="Password" name="password" required>
+                    <input type="password" placeholder="Password" name="password1" required>
 
+                    <label for="password">Password confirmation</label>
+                    <input type="password" placeholder="Password" name="password2" required>
+                    {% for field in form %}
+                         {% for error in field.errors %}
+                            <p style="color: red">{{ error }}</p>
+                         {% endfor %}
+                    {% endfor %}
                     <button type="submit">Create Free Account</button>
                   </div>
                 </form>
+                {% endblock %}
                 <p>By creating account you agree to out <span>Term</span> & <span>Privacy Policy</span></p>
                 <p>I am an <span><a href="{% url 'chatbot:login' %}">Existing User</a></span></p>
             </div>

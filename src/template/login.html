@@ -31,18 +31,20 @@
             </div>
             <div class="content">
                 <h1>Welcome Back</h1>
-                <form action="/action_page.php">
+                {% block content %}
+                <form method="POST">
+                  {% csrf_token %}
                   <div class="container">
                     <label for="name"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="name" required>
-
+                    <input type="text" placeholder="Enter Username" name="username" required>
                     <label for="password"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="password" required>
-
+                    <p style="color: red">{{ errors }}</p>
                     <button type="submit">Login</button>
                     <span class="psw">Forgot <a href="#">password?</a></span>
                   </div>
                 </form>
+                {% endblock %}
                 <p>I am a <span><a href="{% url 'chatbot:signup' %}">New User</a></span></p>
             </div>
         </div>

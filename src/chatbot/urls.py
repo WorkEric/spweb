@@ -11,6 +11,7 @@ app_name = 'chatbot'
 urlpatterns = [
     path('', views.index, name='index'),
     path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
     path('signup/', views.signup, name='signup'),
     path('templates/', views.chatbot_template, name='chatbot_template'),
     path('template/detail', views.chatbot_template_detail, name='chatbot_template_detail'),

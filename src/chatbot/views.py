@@ -3,8 +3,12 @@
 
 """Chatbot app view"""
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
+from .controller.profile_handler import add_new_user, user_login, user_logout
 from .controller.template_handler import get_template_info
+from .exceptions import UserNotFoundError
+
 
 HOME_PAGE = 'home.html'
 TEMPLATE_PAGE = 'chatbot_template.html'
@@ -18,12 +22,32 @@ PROFILE_PAGE = 'profile.html'
 
 def login(request):
     """Login page"""
-    return render(request, LOGIN_PAGE)
+    return_page = request.GET.get('next', '/')
+    try:
+        response = user_login(request, return_page)
+    except UserNotFoundError as unf:
+        return render(request, LOGIN_PAGE,  {'errors': unf.message})
+    else:
+        if response:
+            return response
+        else:
+            return render(request, LOGIN_PAGE)
+
+
+def logout(request):
+    user_logout(request)
+    return redirect('/')
 
 
 def signup(request):
     """Sign up page"""
-    return render(request, SIGNUP_PAGE)
+    return_page = request.GET.get('next', '/')
+    form = add_new_user(request)
+    if form is not None:
+        context = {'form': form}
+        return render(request, SIGNUP_PAGE, context)
+    else:
+        return redirect(return_page)
 
 
 def index(request):
