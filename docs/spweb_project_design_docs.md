@@ -90,8 +90,7 @@ Table for price payment value and duration
 | price_plan_id |  int(11) |  ForeignKey to price_plan.id | |
 | price_type | varchar(255)| | Free, Lite, Standard and Plus |
 | value | int(11) | Money only integer, no conside float. |  |  
-| start_at | datetime(6) |  |  |
-| end_at | datetime(6) |  |  |
+| duration | int(11) |  | unit: month | 
 | created_at | datetime(6) |  |  |
 | updated_at | datetime(6) |  |  |
 
@@ -110,7 +109,7 @@ Table for price plan
 | updated_at | datetime(6) |  |  |
 
 
-### 7. Table `price_plan_feature`
+### 7. Table `price_payment_feature`
 
 Since price_plan and price_feature are many to many relation, so we use the transaction table here.
 
@@ -119,6 +118,7 @@ Since price_plan and price_feature are many to many relation, so we use the tran
 | id | int(11) | PK, AUTO_INCREMENT |
 | price_plan_id | int(11)| ForeignKey to price_plan.id | |
 | price_feature_id | int(11) |  ForeignKey to price_feature.id |  |  
+| value | varchar(255) | | payment and feature value: yes/no/number/unlimit |
 | created_at | datetime(6) |  |  |
 | updated_at | datetime(6) |  |  |
 
