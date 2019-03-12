@@ -116,7 +116,7 @@ Since price_plan and price_feature are many to many relation, so we use the tran
 | Field | Type | Note | Description |
 |---|---|---|---|
 | id | int(11) | PK, AUTO_INCREMENT |
-| price_plan_id | int(11)| ForeignKey to price_plan.id | |
+| price_payment_id | int(11)| ForeignKey to price_payment.id | |
 | price_feature_id | int(11) |  ForeignKey to price_feature.id |  |  
 | value | varchar(255) | | payment and feature value: yes/no/number/unlimit |
 | created_at | datetime(6) |  |  |
