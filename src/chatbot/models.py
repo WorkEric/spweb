@@ -92,8 +92,7 @@ class PricePayment(TimeStampedModel):
     price_plan = models.ForeignKey(PricePlan, on_delete=models.CASCADE)
     price_type = models.CharField(max_length=40, choices=PRICE_TYPE, default='Monthly')
     value = models.IntegerField(default=0, validators=[validate_integer])
-    start_at = models.DateTimeField(null=True)
-    end_at = models.DateTimeField(null=True)
+    duration = models.IntegerField(default=0, validators=[validate_integer])
 
     class Meta:
         """Meta class for price payment"""
@@ -115,6 +114,7 @@ class PricePlanFeature(TimeStampedModel):
     """Price plan feature class"""
     price_plan = models.ForeignKey(PricePlan, on_delete=models.CASCADE)
     price_feature = models.ForeignKey(PriceFeature, on_delete=models.CASCADE)
+    value = models.CharField(max_length=255, blank=True, validators=[MaxLengthValidator(255)])
 
     class Meta:
         """Meta class for price plan feature"""
@@ -155,3 +155,13 @@ class UserPricePayment(TimeStampedModel):
     class Meta:
         """Meta class for user price payment"""
         db_table = 'user_price_payment'
+
+
+class UserTemplateContent(TimeStampedModel):
+    """user and template content table """
+    sp_user = models.ForeignKey(SpUser, on_delete=models.DO_NOTHING)
+    template_content = models.ForeignKey(TemplateContent, on_delete=models.DO_NOTHING)
+
+    class Meta:
+        """Meta class for user template content"""
+        db_table = 'user_template_content'

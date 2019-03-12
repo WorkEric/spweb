@@ -16,7 +16,7 @@ def get_template_info():
     """
     categories = TemplateCategory.objects.all().order_by('created_at')
     contents = TemplateContent.objects.all()
-    # test = TemplateCategory(name='test')
+    # test = TemplateCategory(name='ddd', data_type='education')
     # test.full_clean()
     # test.save()
     return categories, contents

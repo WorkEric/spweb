@@ -73,7 +73,7 @@ Table for price plan
 | Field | Type | Note | Description |
 |---|---|---|---|
 | id | int(11) | PK, AUTO_INCREMENT |
-| name | varchar(255)| UNIQ |  |
+| name | varchar(255)| UNIQ | Free, Lite, Standard and Plus |
 | short_description | longtext| |  |
 | long_description | longtext| |  |
 | created_at | datetime(6) |  |  |
@@ -88,7 +88,7 @@ Table for price payment value and duration
 |---|---|---|---|
 | id | int(11) | PK, AUTO_INCREMENT |
 | price_plan_id |  int(11) |  ForeignKey to price_plan.id | |
-| price_type | varchar(255)| | Free, Lite, Standard and Plus |
+| price_type | varchar(255)| | Monthly or Yearly |
 | value | int(11) | Money only integer, no conside float. |  |  
 | duration | int(11) |  | unit: month | 
 | created_at | datetime(6) |  |  |
@@ -109,14 +109,14 @@ Table for price plan
 | updated_at | datetime(6) |  |  |
 
 
-### 7. Table `price_payment_feature`
+### 7. Table `price_plan_feature`
 
 Since price_plan and price_feature are many to many relation, so we use the transaction table here.
 
 | Field | Type | Note | Description |
 |---|---|---|---|
 | id | int(11) | PK, AUTO_INCREMENT |
-| price_payment_id | int(11)| ForeignKey to price_payment.id | |
+| price_plan_id | int(11)| ForeignKey to price_plan.id | |
 | price_feature_id | int(11) |  ForeignKey to price_feature.id |  |  
 | value | varchar(255) | | payment and feature value: yes/no/number/unlimit |
 | created_at | datetime(6) |  |  |
@@ -143,7 +143,7 @@ Table for price plan
 | created_at | datetime(6) |  |  |
 | updated_at | datetime(6) |  |  |
 
-### 9. Table 'user_price_payment'
+### 9. Table `user_price_payment`
 
 Table for user select plan 
 
@@ -154,5 +154,18 @@ Table for user select plan
 | price_payment_id | int(11)| ForeignKey to price_payment.id |  |
 | start_at | datetime(6) |  |  |
 | end_at | datetime(6) |  |  |
+| created_at | datetime(6) |  |  |
+| updated_at | datetime(6) |  |  |
+
+
+### 10. Table `user_template_content`
+
+Table for user select plan 
+
+| Field | Type | Note | Description |
+|---|---|---|---|
+| id | int(11) | PK, AUTO_INCREMENT |
+| sp_user_id | int(11)| ForeignKey to user.id |  |
+| template_content_id | int(11)| ForeignKey to template_content.id |  |
 | created_at | datetime(6) |  |  |
 | updated_at | datetime(6) |  |  |

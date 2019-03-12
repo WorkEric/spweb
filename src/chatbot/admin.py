@@ -5,7 +5,7 @@
 
 from django.contrib import admin
 from .models import TemplateCategory, TemplateContent, TemplateCategoryContent, PricePlan, \
-    PricePayment, PriceFeature, PricePlanFeature, SpUser, UserPricePayment
+    PricePayment, PriceFeature, PricePlanFeature, SpUser, UserPricePayment, UserTemplateContent
 
 
 class TemplateCategoryAdmin(admin.ModelAdmin):
@@ -30,7 +30,7 @@ class PricePlanAdmin(admin.ModelAdmin):
 
 class PricePaymentAdmin(admin.ModelAdmin):
     """Price payment admin"""
-    list_display = ('price_plan', 'price_type', 'value', 'start_at', 'end_at')
+    list_display = ('price_plan', 'price_type', 'value', 'duration')
 
 
 class PriceFeatureAdmin(admin.ModelAdmin):
@@ -55,6 +55,11 @@ class UserPricePaymentAdmin(admin.ModelAdmin):
     list_display = ('sp_user', 'price_payment', 'start_at', 'end_at')
 
 
+class UserTemplateContentAdmin(admin.ModelAdmin):
+    """User price payment admin"""
+    list_display = ('sp_user', 'template_content')
+
+
 admin.site.register(TemplateCategory, TemplateCategoryAdmin)
 admin.site.register(TemplateContent, TemplateContentAdmin)
 admin.site.register(TemplateCategoryContent, TemplateCategoryContentAdmin)
@@ -64,3 +69,4 @@ admin.site.register(PriceFeature, PriceFeatureAdmin)
 admin.site.register(PricePlanFeature, PricePlanFeatureAdmin)
 admin.site.register(SpUser, SpUserAdmin)
 admin.site.register(UserPricePayment, UserPricePaymentAdmin)
+admin.site.register(UserTemplateContent, UserTemplateContentAdmin)
