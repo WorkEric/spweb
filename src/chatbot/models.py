@@ -136,7 +136,7 @@ class SpUser(TimeStampedModel):
                                validators=[MaxLengthValidator(255)])
     company_url = models.CharField(max_length=1024, blank=True, null=True,
                                    validators=[MaxLengthValidator(1024)])
-    avatar = models.ImageField(default='', upload_to='static/img/spuser')
+    avatar = models.ImageField(default='', upload_to='static/img/spuser', null=True)
     activated = models.BooleanField(default=False)  # user status
     whitelisting = models.BooleanField(default=False)  # user is admin or not
 
