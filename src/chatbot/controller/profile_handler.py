@@ -66,11 +66,11 @@ def get_user_basic_info(email):
 
 
 def update_user_basic_info(user_dict, email):
-    spUser = SpUser.objects.get(email=email)
-    spUser.username = user_dict['username']
-    spUser.first_name = user_dict['firstName']
-    spUser.last_name = user_dict['lastName']
-    spUser.phone = user_dict['phoneNumber']
-    spUser.company_url = user_dict['url']
-    spUser.save()
-    return spUser
+    sp_user = SpUser.objects.get(email=email)
+    sp_user.username = user_dict['username']
+    sp_user.first_name = user_dict['firstName']
+    sp_user.last_name = user_dict['lastName']
+    sp_user.phone = user_dict['phoneNumber']
+    sp_user.company_url = user_dict['url']
+    sp_user.save()
+    return sp_user

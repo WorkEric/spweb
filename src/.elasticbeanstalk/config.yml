@@ -1,20 +1,22 @@
 branch-defaults:
   default:
-    environment: spweb-prod
+    environment: spweb-test
+    group_suffix: null
 environment-defaults:
-  spweb-prod:
+  spweb-env:
     branch: null
     repository: null
 global:
-  application_name: spweb
-  default_ec2_keyname: aws-eb
-  default_platform: arn:aws:elasticbeanstalk:us-west-1::platform/Python 3.6 running
-    on 64bit Amazon Linux/2.7.4
-  default_region: us-west-1
+  application_name: spweb-test
+  branch: null
+  default_ec2_keyname: rcp-utility
+  default_platform: python-3.6
+  default_region: us-east-1
   include_git_submodules: true
   instance_profile: null
   platform_name: null
   platform_version: null
-  profile: eb-cli
+  profile: null
+  repository: null
   sc: null
   workspace_type: Application
