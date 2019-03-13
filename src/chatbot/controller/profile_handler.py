@@ -61,6 +61,16 @@ def user_logout(request):
     logout(request)
 
 
+def get_user_basic_info(email):
+    return SpUser.objects.get(email=email)
 
 
-
+def update_user_basic_info(user_dict, email):
+    spUser = SpUser.objects.get(email=email)
+    spUser.username = user_dict['username']
+    spUser.first_name = user_dict['firstName']
+    spUser.last_name = user_dict['lastName']
+    spUser.phone = user_dict['phoneNumber']
+    spUser.company_url = user_dict['url']
+    spUser.save()
+    return spUser
