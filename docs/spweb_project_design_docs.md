@@ -18,6 +18,7 @@ We are the ToB company website, based on company business, we are focus on the c
 
 ## Database UML
 
+![UML class](uml_class.png)
 
 <br>
 
