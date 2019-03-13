@@ -76,6 +76,8 @@
                 <hr>
                 <p> Free</p>
                 <p>What to upgrade? check <a href="/price">here</a></p>
+            </div>
+            <div class="profileDetails filter template">
                 <h3>Templates</h3>
                 <hr>
                 <div class="row templatesGotten">
@@ -120,16 +122,16 @@
 
 <script>
     $(document).ready(function(){
+        $('.plan').hide();
+        $('.template').hide();
 
-    $(".filter-button").click(function(){
-        var value = $(this).attr('data-filter');
-        $(this).css("font-weight","bold");
-        $(".profile .nav-item .nav-link").not(this).css("font-weight","normal");
-        $(".filter").not('.'+value).hide('3000');
-        $('.filter').filter('.'+value).show('3000');
-    });
-
-
+        $(".filter-button").click(function(){
+            var value = $(this).attr('data-filter');
+            $(this).css("font-weight","bold");
+            $(".profile .nav-item .nav-link").not(this).css("font-weight","normal");
+            $(".filter").not('.'+value).hide('3000');
+            $('.filter').filter('.'+value).show('3000');
+        });
     });
 
 </script>
