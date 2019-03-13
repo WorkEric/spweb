@@ -5,8 +5,8 @@
 
 from django.shortcuts import render, redirect
 
-from .controller.profile_handler import add_new_user, user_login, user_logout, \
-    get_user_basic_info, update_user_basic_info
+from .controller.authentication_handler import add_new_user, user_login, user_logout
+from .controller.profile_handler import get_user_basic_info, update_user_basic_info
 from .controller.template_handler import get_template_info
 from .exceptions import UserNotFoundError
 

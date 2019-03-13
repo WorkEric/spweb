@@ -129,7 +129,7 @@ class SpUser(TimeStampedModel):
                                   validators=[MaxLengthValidator(255)])
     last_name = models.CharField(max_length=255, blank=True, null=True,
                                  validators=[MaxLengthValidator(255)])
-    email = models.CharField(max_length=255, unique=True, null=True, validators=[validate_email])
+    email = models.CharField(max_length=255, unique=True, validators=[validate_email])
     phone = models.CharField(max_length=255, unique=True, null=True,
                              validators=[MaxLengthValidator(255)])
     company = models.CharField(max_length=255, blank=True, null=True,
