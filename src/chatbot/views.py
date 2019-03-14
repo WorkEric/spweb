@@ -6,7 +6,7 @@
 from django.shortcuts import render, redirect
 
 from .controller.authentication_handler import add_new_user, user_login, user_logout
-from .controller.profile_handler import get_user_basic_info, update_user_basic_info
+from .controller.profile_handler import get_user_full_info, update_user_basic_info
 from .controller.template_handler import get_template_info
 from .exceptions import UserNotFoundError
 
@@ -84,9 +84,8 @@ def career(request):
 def profile(request):
     """Profile page"""
     email = request.user.username
-    sp_user = get_user_basic_info(email)
+    sp_user, current_plan, payments = get_user_full_info(email)
     if request.method == 'POST':
-        print(request.POST)
         sp_user = update_user_basic_info(request.POST, email)
     context = {
         'username': sp_user.username,
@@ -94,7 +93,9 @@ def profile(request):
         'last_name': sp_user.last_name,
         'phone_number': sp_user.phone,
         'email': sp_user.email,
-        'url': sp_user.company_url
+        'url': sp_user.company_url,
+        'payments': payments,
+        'current_plan': current_plan
     }
     return render(request, PROFILE_PAGE, context)
 

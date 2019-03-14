@@ -29,7 +29,7 @@ def add_new_user(request):
                 return form
             form.save()
             user = authenticate(username=email, password=password)
-            username = email.rsplit('@',1)[0]
+            username = email.rsplit('@', 1)[0]
             sp_user = SpUser(email=email, company_url=url,
                              activated=True, username=username)
             if SpUser.objects.filter(email=email):
@@ -45,15 +45,15 @@ def add_new_user(request):
 def user_login(request, return_page):
     if request.method == 'POST':
         user_obj = request.POST
-        username = user_obj['username']
+        input_username = user_obj['username']
         password = user_obj['password']
-        if '@' not in username:
-            try:
-                sp_user = SpUser.objects.get(username=username)
-                username = sp_user.email
-            except SpUser.DoesNotExist:
+        username = input_username
+        if '@' not in input_username:
+            if SpUser.objects.filter(username=input_username).exists():
+                sp_user = SpUser.objects.get(username=input_username)
+            else:
                 raise UserNotFoundError("user {} not exist or password is not "
-                                        "correct!".format(username))
+                                        "correct!".format(input_username))
             username = sp_user.email
         user = authenticate(username=username, password=password)
         if user is not None:
@@ -61,7 +61,7 @@ def user_login(request, return_page):
             return HttpResponseRedirect(return_page)
         else:
             raise UserNotFoundError("user {} not exist or password is not "
-                                    "correct!".format(username))
+                                    "correct!".format(input_username))
 
 
 def user_logout(request):
