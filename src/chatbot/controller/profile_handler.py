@@ -1,5 +1,6 @@
 from ..models import SpUser, UserPricePayment, UserTemplateContent
 from ..exceptions import UserNotFoundError
+from datetime import datetime
 
 
 class PaymentInfo(object):
@@ -30,12 +31,12 @@ class TemplateInfo(object):
     """
     def __init__(self, title, image, description):
         self.title = title
-        self.image = image.url
+        self.image = image
         self.description = description
 
     def __str__(self):
         return "title: " + self.title + \
-                " image: " + self.image + \
+                " image: " + self.image.url + \
                 " description: " + self.description
 
 
@@ -59,10 +60,18 @@ def get_user_full_info(email):
     payments = __get_user_payments(email)
     templates = __get_user_templates(email)
     payments = sorted(payments, key=lambda x: x.end_at, reverse=True)
-    return sp_user, payments[0], payments[1:], templates
+    current_plan = None
+    if payments and payments[0].price_name.lower() != "free" and payments[0].end_at >= datetime.now():
+        current_plan = payments[0]
+    if not payments:
+        payments = None
+    elif len(payments) >1 and payments[0].end_at >= datetime.now():
+        payments = payments[1:]
+    return sp_user, current_plan, payments, templates
 
 
 def __get_user_basic_info(email):
+    """inner function to get user basic info"""
     return SpUser.objects.get(email=email)
 
 
@@ -82,7 +91,6 @@ def __get_user_payments(email):
 
 def __get_user_templates(email):
     """inner function to get user templates"""
-    # TODO(hwm): return not correct, please fix it.
     query_set = UserTemplateContent.objects.filter(sp_user__email=email)
     return map(lambda ut: TemplateInfo(ut.template_content.title,
                                        ut.template_content.image,

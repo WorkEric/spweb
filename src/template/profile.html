@@ -99,6 +99,7 @@
                 <p>free</p>
                 <p>What to upgrade? check <a href="/price">here</a></p>
                 {% endif %}
+                {% if payments %}
                 <h3>payment history</h3>
                 <hr>
                 <table class="table">
@@ -121,6 +122,7 @@
                     </tr>
                     {% endfor %}
                 </table>
+                {% endif %}
 
             </div>
             <div class="profileDetails filter template">

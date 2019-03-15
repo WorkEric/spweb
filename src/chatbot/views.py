@@ -9,7 +9,6 @@ from .controller.authentication_handler import add_new_user, user_login, user_lo
 from .controller.profile_handler import get_user_full_info, update_user_basic_info
 from .controller.template_handler import get_template_info
 from .exceptions import UserNotFoundError
-from .models import TemplateContent
 
 
 HOME_PAGE = 'home.html'
@@ -84,9 +83,10 @@ def career(request):
 
 def profile(request):
     """Profile page"""
+    if request.user.is_anonymous:
+        return redirect("/")
     email = request.user.username
     sp_user, current_plan, payments, templates = get_user_full_info(email)
-    templates = TemplateContent.objects.all()  # TODO(hwm): remove after fix __get_user_templates function return
     if request.method == 'POST':
         sp_user = update_user_basic_info(request.POST, email)
     context = {
