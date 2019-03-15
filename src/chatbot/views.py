@@ -84,7 +84,7 @@ def career(request):
 def profile(request):
     """Profile page"""
     email = request.user.username
-    sp_user, current_plan, payments = get_user_full_info(email)
+    sp_user, current_plan, payments, templates = get_user_full_info(email)
     if request.method == 'POST':
         sp_user = update_user_basic_info(request.POST, email)
     context = {
@@ -95,7 +95,8 @@ def profile(request):
         'email': sp_user.email,
         'url': sp_user.company_url,
         'payments': payments,
-        'current_plan': current_plan
+        'current_plan': current_plan,
+        'templates': templates
     }
     return render(request, PROFILE_PAGE, context)
 

@@ -1,4 +1,4 @@
-from ..models import SpUser, UserPricePayment
+from ..models import SpUser, UserPricePayment, UserTemplateContent
 from ..exceptions import UserNotFoundError
 
 
@@ -19,9 +19,24 @@ class PaymentInfo(object):
 
     def __str__(self):
         return "product: " + self.price_name + \
-                "price type: " + self.price_type + \
-                "start date" + str(self.start_at) + \
-                "end date" + str(self.end_at)
+                " price type: " + self.price_type + \
+                " start date: " + str(self.start_at) + \
+                " end date" + str(self.end_at)
+
+
+class TemplateInfo(object):
+    """
+    Representation of a template record
+    """
+    def __init__(self, title, image, description):
+        self.title = title
+        self.image = image.url
+        self.description = description
+
+    def __str__(self):
+        return "title: " + self.title + \
+                " image: " + self.image + \
+                " description: " + self.description
 
 
 def update_user_basic_info(user_dict, email):
@@ -40,8 +55,10 @@ def get_user_full_info(email):
         raise UserNotFoundError("user {} not found!".format(email))
     sp_user = __get_user_basic_info(email)
     payments = __get_user_payments(email)
+    templates = __get_user_templates(email)
     payments = sorted(payments, key=lambda x: x.end_at, reverse=True)
-    return sp_user, payments[0], payments[1:]
+
+    return sp_user, payments[0], payments[1:], templates
 
 
 def __get_user_basic_info(email):
@@ -59,3 +76,11 @@ def __get_user_payments(email):
                                 price.price_payment.duration,
                                 price.start_at,
                                 price.end_at), query_set))
+
+
+def __get_user_templates(email):
+    query_set = UserTemplateContent.objects.filter(sp_user__email=email)
+    return map(lambda ut: TemplateInfo(ut.template_content.title,
+                                       ut.template_content.image,
+                                       ut.template_content.description
+                                       ), query_set)

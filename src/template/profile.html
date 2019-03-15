@@ -127,30 +127,16 @@
                 <h3>Templates</h3>
                 <hr>
                 <div class="row templatesGotten">
+                    {% for template in templates %}
                     <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
                         <div class="card" style="width: 16rem;">
-                              <img class="card-img-top" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"  class="img-responsive" alt="Card image cap">
+                              <img class="card-img-top" src="{{template.image}}"  class="img-responsive" alt="Card image cap">
                               <div class="card-body">
-                                <h5 class="card-title">Career Guidance</h5>
+                                <h5 class="card-title">{{template.title}}</h5>
                               </div>
                         </div>
                     </div>
-                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                        <div class="card" style="width: 16rem;">
-                              <img class="card-img-top" src="https://images.unsplash.com/photo-1434682881908-b43d0467b798?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=753&q=80"  class="img-responsive" alt="Card image cap">
-                              <div class="card-body">
-                                <h5 class="card-title">Fitness Center</h5>
-                              </div>
-                        </div>
-                    </div>
-                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                        <div class="card" style="width: 16rem;">
-                              <img class="card-img-top" src="https://images.unsplash.com/photo-1525571453712-090270b8354f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"  class="img-responsive" alt="Card image cap">
-                              <div class="card-body">
-                                <h5 class="card-title">Language School</h5>
-                              </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                     <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
                         <div class="card" style="width: 16rem;">
                               <a href="../template/detail">
