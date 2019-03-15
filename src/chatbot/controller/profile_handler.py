@@ -40,6 +40,7 @@ class TemplateInfo(object):
 
 
 def update_user_basic_info(user_dict, email):
+    """update user basic info function"""
     sp_user = SpUser.objects.get(email=email)
     sp_user.username = user_dict['username']
     sp_user.first_name = user_dict['firstName']
@@ -51,13 +52,13 @@ def update_user_basic_info(user_dict, email):
 
 
 def get_user_full_info(email):
+    """get user full info function"""
     if not SpUser.objects.filter(email=email).exists():
         raise UserNotFoundError("user {} not found!".format(email))
     sp_user = __get_user_basic_info(email)
     payments = __get_user_payments(email)
     templates = __get_user_templates(email)
     payments = sorted(payments, key=lambda x: x.end_at, reverse=True)
-
     return sp_user, payments[0], payments[1:], templates
 
 
@@ -66,6 +67,7 @@ def __get_user_basic_info(email):
 
 
 def __get_user_payments(email):
+    """inner function to get user payment"""
     query_set = UserPricePayment.objects.filter(sp_user__email=email)
     return list(map(lambda price:
                     PaymentInfo(price.price_payment.price_plan.name,
@@ -79,6 +81,8 @@ def __get_user_payments(email):
 
 
 def __get_user_templates(email):
+    """inner function to get user templates"""
+    # TODO(hwm): return not correct, please fix it.
     query_set = UserTemplateContent.objects.filter(sp_user__email=email)
     return map(lambda ut: TemplateInfo(ut.template_content.title,
                                        ut.template_content.image,
