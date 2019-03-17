@@ -42,8 +42,27 @@ Billed Monthly</pre>
           </th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
+      <tbody> 
+        {% for plan_info in plan_infos%}
+          <tr>          
+            <th scope="row">{{ plan_info.name }}</th>
+            <td> {{plan_info.Freevalue}} </td>
+            <td> {{plan_info.Litevalue}} </td>
+            <td> {{plan_info.Standardvalue}} </td>
+            <td> {{plan_info.Plusvalue}} </td>
+          </tr>
+        {% endfor%}
+
+
+        {% comment %} {% for feature in features%}
+          <tr>          
+            <th scope="row">{{ feature.name }}</th>
+              {% for x in plan_features|slice:"4 : 8 "%}
+                  <td>-{{x.value}}</td>
+              {% endfor %}
+          </tr>
+        {% endfor%} {% endcomment %}
+        <!-- <tr>
           <th scope="row">Bots</th>
           <td>Unlimited</td>
           <td>Unlimited</td>
@@ -105,7 +124,7 @@ Billed Monthly</pre>
           <td>-</td>
           <td>✓</td>
           <td>✓</td>
-        </tr>
+        </tr> -->
         <tr>
           <th scope="row"></th>
             <td><a href="/signup">Signup </a><i class="fa fa-sign-in" aria-hidden="true"></i></td>

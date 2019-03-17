@@ -98,6 +98,18 @@ class PricePayment(TimeStampedModel):
         """Meta class for price payment"""
         db_table = 'price_payment'
 
+class PriceFeature_PricePlan(TimeStampedModel):
+    name = models.CharField(max_length=255, blank=True, validators=[MaxLengthValidator(255)])
+    Freevalue = models.CharField(max_length=255, blank=True, validators=[MaxLengthValidator(255)])
+    Litevalue = models.CharField(max_length=255, blank=True, validators=[MaxLengthValidator(255)])
+    Standardvalue = models.CharField(max_length=255, blank=True, validators=[MaxLengthValidator(255)])
+    Plusvalue = models.CharField(max_length=255, blank=True, validators=[MaxLengthValidator(255)])
+
+    class Meta:
+        """Meta class for price feature"""
+        managed = True
+        db_table = 'pricefeature_priceplan'
+
 
 class PriceFeature(TimeStampedModel):
     """Price feature class"""
@@ -107,6 +119,7 @@ class PriceFeature(TimeStampedModel):
 
     class Meta:
         """Meta class for price feature"""
+        managed = True
         db_table = 'price_feature'
 
 
@@ -118,6 +131,7 @@ class PricePlanFeature(TimeStampedModel):
 
     class Meta:
         """Meta class for price plan feature"""
+        managed = True
         db_table = 'price_plan_feature'
 
 
