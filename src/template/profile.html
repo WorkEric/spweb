@@ -70,41 +70,75 @@
                     </div>
                     <button type="submit" class="btn btn-primary mb-2">Save</button>
                 </form>
+
             </div>
             <div class="profileDetails filter plan">
-                <h3>Plan</h3>
+                <h3>your current plan</h3>
                 <hr>
-                <p> Free</p>
+                {% if current_plan %}
+                <p><a href="/price">{{current_plan.price_name}}</a></p>
+                <table class="table">
+                    <tr>
+                        <th scope="row">Subscribes</th>
+                        <th scope="row">Services</th>
+                        <th scope="row">Payment</th>
+                        <th scope="row">Duration</th>
+                        <th scope="row">Start Date</th>
+                        <th scope="row">End Date</th>
+                    </tr>
+                    <tr>
+                        <td>{{current_plan.price_type}}</td>
+                        <td>{{current_plan.short_description}}</td>
+                        <td>{{current_plan.value}}</td>
+                        <td>{{current_plan.duration}}</td>
+                        <td>{{current_plan.start_at}}</td>
+                        <td>{{current_plan.end_at}}</td>
+                    </tr>
+                </table>
+                {% else %}
+                <p>free</p>
                 <p>What to upgrade? check <a href="/price">here</a></p>
+                {% endif %}
+                {% if payments %}
+                <h3>payment history</h3>
+                <hr>
+                <table class="table">
+                    <tr>
+                        <th scope="row">Subscribes</th>
+                        <th scope="row">Services</th>
+                        <th scope="row">Payment</th>
+                        <th scope="row">Duration</th>
+                        <th scope="row">Start Date</th>
+                        <th scope="row">End Date</th>
+                    </tr>
+                    {% for payment in payments %}
+                    <tr>
+                        <td>{{payment.price_type}}</td>
+                        <td>{{payment.short_description}}</td>
+                        <td>{{payment.value}}</td>
+                        <td>{{payment.duration}}</td>
+                        <td>{{payment.start_at}}</td>
+                        <td>{{payment.end_at}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                {% endif %}
+
             </div>
             <div class="profileDetails filter template">
                 <h3>Templates</h3>
                 <hr>
                 <div class="row templatesGotten">
+                    {% for template in templates %}
                     <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
                         <div class="card" style="width: 16rem;">
-                              <img class="card-img-top" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"  class="img-responsive" alt="Card image cap">
+                              <img class="card-img-top img-responsive" src="{{ template.image.url }}" alt="Card image cap">
                               <div class="card-body">
-                                <h5 class="card-title">Career Guidance</h5>
+                                <h5 class="card-title">{{template.title}}</h5>
                               </div>
                         </div>
                     </div>
-                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                        <div class="card" style="width: 16rem;">
-                              <img class="card-img-top" src="https://images.unsplash.com/photo-1434682881908-b43d0467b798?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=753&q=80"  class="img-responsive" alt="Card image cap">
-                              <div class="card-body">
-                                <h5 class="card-title">Fitness Center</h5>
-                              </div>
-                        </div>
-                    </div>
-                    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                        <div class="card" style="width: 16rem;">
-                              <img class="card-img-top" src="https://images.unsplash.com/photo-1525571453712-090270b8354f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"  class="img-responsive" alt="Card image cap">
-                              <div class="card-body">
-                                <h5 class="card-title">Language School</h5>
-                              </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                     <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6">
                         <div class="card" style="width: 16rem;">
                               <a href="../template/detail">
