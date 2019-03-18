@@ -37,9 +37,11 @@ class PriceFeatureAdmin(admin.ModelAdmin):
     """Price feature admin"""
     list_display = ('id', 'name', 'description')
 
+
 class PriceFeature_PricePlanAdmin(admin.ModelAdmin):
     """Price PriceFeature_PricePlanAdmin admin"""
     list_display = ('name', 'Freevalue', 'Litevalue', 'Standardvalue', 'Plusvalue')
+
 
 class PricePlanFeatureAdmin(admin.ModelAdmin):
     """Price plan feature admin"""

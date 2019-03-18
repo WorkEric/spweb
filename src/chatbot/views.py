@@ -10,6 +10,7 @@ from .controller.profile_handler import get_user_full_info, update_user_basic_in
 from .controller.template_handler import get_template_info
 from .controller.price_handler import get_feature_info, get_plan_feature_info, get_plan_info
 from .exceptions import UserNotFoundError
+from .models import TemplateContent
 
 
 HOME_PAGE = 'home.html'
@@ -59,7 +60,13 @@ def index(request):
 
 def chatbot_template(request):
     """chatbot template page"""
+    category = 'all'
+    if 'category' in request.GET:
+        category = request.GET['category']
+    contents = TemplateContent.objects.filter(template_categories__url_name=category).all()
+    print('contents; ', contents)
     categories, contents = get_template_info()
+    print('contents; ', contents)
     context = {
         'categories': categories,
         'contents': contents
@@ -83,6 +90,7 @@ def price(request):
         'plan_infos' : plan_infos
     }
     return render(request, PRICE_PAGE, context)
+
 
 def career(request):
     """Career page"""
