@@ -14,6 +14,8 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
     path('signup/', views.signup, name='signup'),
     path('templates/', views.chatbot_template, name='chatbot_template'),
+    path('categories/<str:category>', views.chatbot_template_category,
+         name='chatbot_template_category'),
     path('template/detail', views.chatbot_template_detail, name='chatbot_template_detail'),
     path('price/', views.price, name='price'),
     path('career/', views.career, name='career'),

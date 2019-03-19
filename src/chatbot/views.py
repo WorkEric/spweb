@@ -7,10 +7,9 @@ from django.shortcuts import render, redirect
 
 from .controller.authentication_handler import add_new_user, user_login, user_logout
 from .controller.profile_handler import get_user_full_info, update_user_basic_info
-from .controller.template_handler import get_template_info
 from .controller.price_handler import get_feature_info, get_plan_feature_info, get_plan_info
 from .exceptions import UserNotFoundError
-from .models import TemplateContent
+from .models import TemplateContent, TemplateCategory
 
 
 HOME_PAGE = 'home.html'
@@ -59,14 +58,26 @@ def index(request):
 
 
 def chatbot_template(request):
-    """chatbot template page"""
-    category = 'all'
-    if 'category' in request.GET:
-        category = request.GET['category']
+    """chatbot template page
+
+    Ex: before save do validation on the model
+    test = TemplateCategory(name='ddd', data_type='education')
+    test.full_clean()
+    test.save()
+    """
+    categories = TemplateCategory.objects.all().order_by('created_at')
+    contents = TemplateContent.objects.all()
+    context = {
+        'categories': categories,
+        'contents': contents
+    }
+    return render(request, TEMPLATE_PAGE, context)
+
+
+def chatbot_template_category(request, category):
+    """chatbot template category"""
+    categories = TemplateCategory.objects.all().order_by('created_at')
     contents = TemplateContent.objects.filter(template_categories__url_name=category).all()
-    print('contents; ', contents)
-    categories, contents = get_template_info()
-    print('contents; ', contents)
     context = {
         'categories': categories,
         'contents': contents
