@@ -80,9 +80,11 @@ class TemplateCategoryContent(TimeStampedModel):
 class PricePlan(TimeStampedModel):
     """Price plan"""
     name = models.CharField(max_length=255, unique=True, null=True,
-                            validators=[MaxLengthValidator(255)])  # Free, Lite, Standard, Plus
+                            validators=[MaxLengthValidator(255)])
     short_description = models.TextField(null=True)
     long_description = models.TextField(null=True)
+    yearly_cost = models.IntegerField(default=0, validators=[validate_integer])
+    monthly_cost = models.IntegerField(default=0, validators=[validate_integer])
 
     class Meta:
         """Meta class for price plan"""
@@ -100,18 +102,6 @@ class PricePayment(TimeStampedModel):
         """Meta class for price payment"""
         db_table = 'price_payment'
 
-class PriceFeature_PricePlan(TimeStampedModel):
-    name = models.CharField(max_length=255, blank=True, validators=[MaxLengthValidator(255)])
-    Freevalue = models.CharField(max_length=255, blank=True, validators=[MaxLengthValidator(255)])
-    Litevalue = models.CharField(max_length=255, blank=True, validators=[MaxLengthValidator(255)])
-    Standardvalue = models.CharField(max_length=255, blank=True, validators=[MaxLengthValidator(255)])
-    Plusvalue = models.CharField(max_length=255, blank=True, validators=[MaxLengthValidator(255)])
-
-    class Meta:
-        """Meta class for price feature"""
-        managed = True
-        db_table = 'pricefeature_priceplan'
-
 
 class PriceFeature(TimeStampedModel):
     """Price feature class"""
@@ -121,7 +111,6 @@ class PriceFeature(TimeStampedModel):
 
     class Meta:
         """Meta class for price feature"""
-        managed = True
         db_table = 'price_feature'
 
 
@@ -133,7 +122,6 @@ class PricePlanFeature(TimeStampedModel):
 
     class Meta:
         """Meta class for price plan feature"""
-        managed = True
         db_table = 'price_plan_feature'
 
 

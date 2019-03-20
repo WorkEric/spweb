@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 
 from .controller.authentication_handler import add_new_user, user_login, user_logout
 from .controller.profile_handler import get_user_full_info, update_user_basic_info
-from .controller.price_handler import get_feature_info, get_plan_feature_info, get_plan_info
+from .controller.price_handler import get_plan_and_feature
 from .exceptions import UserNotFoundError
 from .models import TemplateContent, TemplateCategory
 
@@ -92,13 +92,10 @@ def chatbot_template_detail(request):
 
 def price(request):
     """Chatbot service price"""
-    features = get_feature_info()
-    plan_features = get_plan_feature_info()
-    plan_infos = get_plan_info()
+    plans, rows = get_plan_and_feature()
     context = {
-        'features' : features,
-        'plan_features' : plan_features,
-        'plan_infos' : plan_infos
+        'plans': plans,
+        'rows': rows
     }
     return render(request, PRICE_PAGE, context)
 
