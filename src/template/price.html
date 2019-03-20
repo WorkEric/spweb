@@ -42,7 +42,7 @@ Billed Monthly</pre>
             {% if user.is_authenticated %}
                 <td><a href="/profile">subscribe </a><i class="fa fa-sign-in" aria-hidden="true"></i></td>
             {% else %}
-                <td><a href="/signup">Signup </a><i class="fa fa-sign-in" aria-hidden="true"></i></td>
+                <td><a href="{% url 'chatbot:login' %}?next={{request.path}}">subscribe </a><i class="fa fa-sign-in" aria-hidden="true"></i></td>
             {% endif %}
             {% endfor %}
         </tr>
