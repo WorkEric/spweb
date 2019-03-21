@@ -83,8 +83,6 @@ class PricePlan(TimeStampedModel):
                             validators=[MaxLengthValidator(255)])
     short_description = models.TextField(null=True)
     long_description = models.TextField(null=True)
-    yearly_cost = models.IntegerField(default=0, validators=[validate_integer])
-    monthly_cost = models.IntegerField(default=0, validators=[validate_integer])
 
     class Meta:
         """Meta class for price plan"""

@@ -6,7 +6,8 @@
 from django.shortcuts import render, redirect
 
 from .controller.authentication_handler import add_new_user, user_login, user_logout
-from .controller.profile_handler import get_user_full_info, update_user_basic_info
+from .controller.profile_handler import get_user_full_info, \
+    update_user_basic_info, add_subscription
 from .controller.price_handler import get_plan_and_feature
 from .exceptions import UserNotFoundError
 from .models import TemplateContent, TemplateCategory
@@ -109,7 +110,10 @@ def profile(request):
     """Profile page"""
     if request.user.is_anonymous:
         return redirect("/")
+    subscribe = request.GET.get('price', None)
     email = request.user.username
+    if subscribe:
+        add_subscription(email, subscribe)
     sp_user, current_plan, payments, templates = get_user_full_info(email)
     if request.method == 'POST':
         sp_user = update_user_basic_info(request.POST, email)

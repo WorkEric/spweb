@@ -21,6 +21,7 @@
             <p>{{plan.name}}</p>
             <p class="price_month">${{plan.monthly_cost}}</p>
             <p class="price_year" style="display:none">${{plan.yearly_cost}}</p>
+            <input type="hidden" id="price_type" name="price_type" value="1">
             <pre class="paymentSwitch">Per Month
 Billed Monthly</pre>
           </th>
@@ -40,7 +41,7 @@ Billed Monthly</pre>
           <th scope="row"></th>
             {% for plan in plans %}
             {% if user.is_authenticated %}
-                <td><a href="/profile">subscribe </a><i class="fa fa-sign-in" aria-hidden="true"></i></td>
+                <td><a href="{% url 'chatbot:profile' %}?price={{plan.name}}">subscribe </a><i class="fa fa-sign-in" aria-hidden="true"></i></td>
             {% else %}
                 <td><a href="{% url 'chatbot:login' %}?next={{request.path}}">subscribe </a><i class="fa fa-sign-in" aria-hidden="true"></i></td>
             {% endif %}
@@ -60,6 +61,7 @@ Billed Monthly</pre>
         $('.paymentSwitch').html('Per Yearly <span style="display: block;">Billed Yearly</span>');
         $('.price_month').prop("style", "display:none");
         $('.price_year').prop("style", "display:block");
+        $('input[name="price_type"]').val('12');
         $('#payYearly').css('color', '#4de27f');
         $('#payMonthly').css('color', 'black');
     });
@@ -67,6 +69,7 @@ Billed Monthly</pre>
         $('.paymentSwitch').html('Per Monthly <span style="display: block;">Billed Monthly</span>');
         $('.price_month').prop("style", "display:block");
         $('.price_year').prop("style", "display:none");
+        $('input[name="price_type"]').val('1');
         $('#payMonthly').css('color', '#4de27f');
         $('#payYearly').css('color', 'black');
     });

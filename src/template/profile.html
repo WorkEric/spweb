@@ -82,7 +82,6 @@
                         <th scope="row">Subscribes</th>
                         <th scope="row">Services</th>
                         <th scope="row">Payment</th>
-                        <th scope="row">Duration</th>
                         <th scope="row">Start Date</th>
                         <th scope="row">End Date</th>
                     </tr>
@@ -90,7 +89,6 @@
                         <td>{{current_plan.price_type}}</td>
                         <td>{{current_plan.short_description}}</td>
                         <td>{{current_plan.value}}</td>
-                        <td>{{current_plan.duration}}</td>
                         <td>{{current_plan.start_at}}</td>
                         <td>{{current_plan.end_at}}</td>
                     </tr>
@@ -99,7 +97,6 @@
                 <p>free</p>
                 <p>What to upgrade? check <a href="/price">here</a></p>
                 {% endif %}
-                {% if payments %}
                 <h3>payment history</h3>
                 <hr>
                 <table class="table">
@@ -107,23 +104,19 @@
                         <th scope="row">Subscribes</th>
                         <th scope="row">Services</th>
                         <th scope="row">Payment</th>
-                        <th scope="row">Duration</th>
                         <th scope="row">Start Date</th>
                         <th scope="row">End Date</th>
                     </tr>
                     {% for payment in payments %}
                     <tr>
-                        <td>{{payment.price_type}}</td>
-                        <td>{{payment.short_description}}</td>
-                        <td>{{payment.value}}</td>
-                        <td>{{payment.duration}}</td>
-                        <td>{{payment.start_at}}</td>
-                        <td>{{payment.end_at}}</td>
+                        <td>{% if payment.price_type %} {{payment.price_type}} {% else %} - {% endif %}</td>
+                        <td>{% if payment.short_description %} {{payment.short_description}} {% else %} - {% endif %}</td>
+                        <td>{% if payment.value %} {{payment.value}} {% else %} - {% endif %}</td>
+                        <td>{% if payment.start_at %} {{payment.start_at}} {% else %} - {% endif %}</td>
+                        <td>{% if payment.end_at %} {{payment.end_at}} {% else %} - {% endif %}</td>
                     </tr>
                     {% endfor %}
                 </table>
-                {% endif %}
-
             </div>
             <div class="profileDetails filter template">
                 <h3>Templates</h3>

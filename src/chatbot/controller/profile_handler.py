@@ -1,6 +1,7 @@
-from ..models import SpUser, UserPricePayment, UserTemplateContent
+from ..models import SpUser, UserPricePayment, UserTemplateContent, PricePlan, PricePayment
 from ..exceptions import UserNotFoundError
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 
 class PaymentInfo(object):
@@ -64,15 +65,38 @@ def get_user_full_info(email):
     if payments and payments[0].price_name.lower() != "free" and payments[0].end_at >= datetime.now():
         current_plan = payments[0]
     if not payments:
-        payments = None
+        payments = [PaymentInfo('free', 'free plan', 'free plan', 'free', 0, None, None, None)]
     elif len(payments) >1 and payments[0].end_at >= datetime.now():
         payments = payments[1:]
     return sp_user, current_plan, payments, templates
 
 
+def add_subscription(email, price_name):
+    """add new subscription"""
+    if not SpUser.objects.filter(email=email).exists():
+        raise UserNotFoundError("user {} not found!".format(email))
+    sp_user = __get_user_basic_info(email)
+    print(sp_user)
+    payment = __get_price_payment(price_name)
+    for p in payment:
+        print(p)
+    if payment:
+        date_after_month = datetime.now() + relativedelta(months=1)
+        user_pay = UserPricePayment(sp_user=sp_user,
+                                    price_payment=payment[0],
+                                    start_at=datetime.now(),
+                                    end_at=date_after_month)
+        user_pay.save()
+
+
 def __get_user_basic_info(email):
     """inner function to get user basic info"""
     return SpUser.objects.get(email=email)
+
+
+def __get_price_payment(price_name):
+    """inner function to get price plan"""
+    return list(PricePayment.objects.filter(price_plan__name=price_name, price_type='Monthly'))
 
 
 def __get_user_payments(email):
