@@ -59,8 +59,8 @@ Billed Monthly</pre>
 <script>
     $('#payYearly').click(function(){
         $('.paymentSwitch').html('Per Yearly <span style="display: block;">Billed Yearly</span>');
-        $('.price_month').prop("style", "display:none");
-        $('.price_year').prop("style", "display:block");
+        $('.price_year').prop("style", "display:none");
+        $('.price_month').prop("style", "display:block");
         $('input[name="price_type"]').val('12');
         $('#payYearly').css('color', '#4de27f');
         $('#payMonthly').css('color', 'black');
