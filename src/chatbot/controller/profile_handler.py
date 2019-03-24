@@ -76,10 +76,7 @@ def add_subscription(email, price_name):
     if not SpUser.objects.filter(email=email).exists():
         raise UserNotFoundError("user {} not found!".format(email))
     sp_user = __get_user_basic_info(email)
-    print(sp_user)
     payment = __get_price_payment(price_name)
-    for p in payment:
-        print(p)
     if payment:
         date_after_month = datetime.now() + relativedelta(months=1)
         user_pay = UserPricePayment(sp_user=sp_user,

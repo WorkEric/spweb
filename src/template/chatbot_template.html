@@ -23,7 +23,7 @@
                     <div class="card" style="width: 18rem;">
                           <img class="card-img-top" src="{{ content.image.url }}"  class="img-responsive" alt="Card image cap">
                           <div class="card-body">
-                            <h5 class="card-title">{{ content.title }}</h5>
+                              <h5 class="card-title"><a href="{% url 'chatbot:chatbot_template_detail' content.id %}">{{ content.title }}</a></h5>
                           </div>
                     </div>
                 </div>

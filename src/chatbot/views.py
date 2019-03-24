@@ -4,6 +4,8 @@
 """Chatbot app view"""
 
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 from .controller.authentication_handler import add_new_user, user_login, user_logout
 from .controller.profile_handler import get_user_full_info, \
@@ -86,9 +88,15 @@ def chatbot_template_category(request, category):
     return render(request, TEMPLATE_PAGE, context)
 
 
-def chatbot_template_detail(request):
+def chatbot_template_detail(request, id_number):
     """Chatbot template detail"""
-    return render(request, TEMPLATE_DETAIL_PAGE)
+    content = TemplateContent.objects.filter(pk=id_number).first()
+    if not content:
+        return HttpResponseRedirect(reverse('chatbot:chatbot_template'))
+    context = {
+        'content': content
+    }
+    return render(request, TEMPLATE_DETAIL_PAGE, context)
 
 
 def price(request):
